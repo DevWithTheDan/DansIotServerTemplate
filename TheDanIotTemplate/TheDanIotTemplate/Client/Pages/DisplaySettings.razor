@@ -1,0 +1,49 @@
+﻿@page "/DisplaySettings"
+@inject NavigationManager _navigationManager
+<MudPaper>
+    <MudText Typo="Typo.h3">Display Settings</MudText>
+</MudPaper>
+<MudPaper>
+    <MudExpansionPanels>
+        <MudExpansionPanel Text="Global Arc Gauge Settings">
+            <MudNumericField @bind-Value="ArcGaugeSettings.StartAngle" Label="Start Angle"></MudNumericField>
+            <MudNumericField @bind-Value="ArcGaugeSettings.EndAngle" Label="End Angle"></MudNumericField>
+            <MudNumericField @bind-Value="ArcGaugeSettings.Step" Label="Step"></MudNumericField>
+            <MudNumericField @bind-Value="ArcGaugeSettings.HeightPx" Label="Height in pixels"></MudNumericField>
+            <MudNumericField @bind-Value="ArcGaugeSettings.WidthPx" Label="Width in pixels"></MudNumericField>
+            <MudNumericField @bind-Value="ArcGaugeSettings.Min" Label="Minimum Value"></MudNumericField>
+            <MudNumericField @bind-Value="ArcGaugeSettings.Max" Label="Maximum Value"></MudNumericField>
+            <MudTextField @bind-Value="ArcGaugeSettings.Suffix" Label="Suffix"></MudTextField>
+            <MudSelect @bind-Value="@SelectedTickPositionArc">
+                @foreach (var tickPosition in GaugeTickPositions)
+                {
+                    <MudSelectItem Value="tickPosition.Key">@tickPosition.Value</MudSelectItem>
+                }
+            </MudSelect>
+            <MudNumericField @bind-Value="ArcSampleValue" Label="Arc Sample Value"></MudNumericField>
+            <MudText>Preview:</MudText>
+            <ArcGauge StartAngle="@ArcGaugeSettings.StartAngle" EndAngle="@ArcGaugeSettings.EndAngle" Step="@ArcGaugeSettings.Step" GaugeTickPosition="@ArcGaugeSettings.GaugeTickPosition" HeightPx="@ArcGaugeSettings.HeightPx" WidthPx="@ArcGaugeSettings.WidthPx" Min="@ArcGaugeSettings.Min" Max="@ArcGaugeSettings.Max" Suffix="@ArcGaugeSettings.Suffix" Value="@ArcSampleValue"></ArcGauge>
+            <MudButton OnClick="SetArcGaugeSetting">Save Changes</MudButton>
+        </MudExpansionPanel>
+        <MudExpansionPanel Text="Global Radial Gauge Settings">
+            <MudNumericField @bind-Value="RadialGaugeSettings.StartAngle" Label="Start Angle"></MudNumericField>
+            <MudNumericField @bind-Value="RadialGaugeSettings.EndAngle" Label="End Angle"></MudNumericField>
+            <MudNumericField @bind-Value="RadialGaugeSettings.Step" Label="Step"></MudNumericField>
+            <MudNumericField @bind-Value="RadialGaugeSettings.HeightPx" Label="Height in pixels"></MudNumericField>
+            <MudNumericField @bind-Value="RadialGaugeSettings.WidthPx" Label="Width in pixels"></MudNumericField>
+            <MudNumericField @bind-Value="RadialGaugeSettings.Min" Label="Minimum Value"></MudNumericField>
+            <MudNumericField @bind-Value="RadialGaugeSettings.Max" Label="Maximum Value"></MudNumericField>
+            <MudTextField @bind-Value="RadialGaugeSettings.Suffix" Label="Suffix"></MudTextField>
+            <MudSelect @bind-Value="@SelectedTickPositionRadial">
+                @foreach (var tickPosition in GaugeTickPositions)
+                {
+                    <MudSelectItem Value="tickPosition.Key">@tickPosition.Value</MudSelectItem>
+                }
+            </MudSelect>
+            <MudNumericField @bind-Value="RadialSampleValue" Label="Radial Sample Value"></MudNumericField>
+            <MudText>Preview:</MudText>
+            <RadialGauge StartAngle="@RadialGaugeSettings.StartAngle" EndAngle="@RadialGaugeSettings.EndAngle" Step="@RadialGaugeSettings.Step" GaugeTickPosition="@RadialGaugeSettings.GaugeTickPosition" HeightPx="@RadialGaugeSettings.HeightPx" WidthPx="@RadialGaugeSettings.WidthPx" Min="@RadialGaugeSettings.Min" Max="@RadialGaugeSettings.Max" Suffix="@RadialGaugeSettings.Suffix" Value="@RadialSampleValue"></RadialGauge>
+            <MudButton OnClick="SetRadialGaugeSetting">Save Changes</MudButton>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+</MudPaper>

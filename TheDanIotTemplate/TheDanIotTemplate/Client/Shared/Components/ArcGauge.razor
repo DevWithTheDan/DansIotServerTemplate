@@ -1,0 +1,42 @@
+﻿<MudContainer Style="@Style">
+    <MudCard>
+        <RadzenArcGauge>
+            <RadzenArcGaugeScale StartAngle="@StartAngle" EndAngle="@EndAngle" Step="@Step" Min="@Min" Max="@Max" TickPosition=@GaugeTickPositionEnum>
+                <RadzenArcGaugeScaleValue Value=@Value >
+                    <Template Context="pointer">
+                        <h4>
+                            @pointer.Value <sup>@Suffix</sup>
+                        </h4>
+                    </Template>
+                </RadzenArcGaugeScaleValue>
+            </RadzenArcGaugeScale>
+        </RadzenArcGauge>
+    </MudCard>
+</MudContainer>
+
+@code {
+    [Parameter] public double Value { get; set; } = 10;
+    [Parameter] public double StartAngle { get; set; } = -150;
+    [Parameter] public double EndAngle { get; set; } = 150;
+    [Parameter] public double Step { get; set; } = 20;
+    [Parameter] public double Min { get; set; } = 0;
+    [Parameter] public double Max { get; set; } = 200;
+    [Parameter] public int GaugeTickPosition { get; set; } = 0;
+    [Parameter] public int HeightPx { get; set; } = 150;
+    [Parameter] public int WidthPx { get; set; } = 150;
+    [Parameter] public string Suffix { get; set; } = "";
+    private string Style
+    {
+        get
+        {
+            return HeightPx + "px;" + WidthPx + "px;";
+        }
+    }
+    private GaugeTickPosition GaugeTickPositionEnum
+    {
+        get
+        {
+            return (GaugeTickPosition)GaugeTickPosition;
+        }
+    }
+}

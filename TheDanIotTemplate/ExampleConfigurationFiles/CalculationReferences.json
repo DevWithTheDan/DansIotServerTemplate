@@ -1,0 +1,34 @@
+[
+	{
+		"Id": 1,
+		"CalculationName": "Plus",
+		"IsPositiveOnly": false, 
+		"IsNegativeOnly": false, 
+		"Max": 305, 
+		"Min": 25
+	},
+	{
+		"Id": 2,
+		"CalculationName": "Minus",
+		"IsPositiveOnly": false, 
+		"IsNegativeOnly": true, 
+		"Max": -10, 
+		"Min": -200
+	},
+	{
+		"Id": 3,
+		"CalculationName": "Divide",
+		"IsPositiveOnly": true, 
+		"IsNegativeOnly": false, 
+		"Max": 25, 
+		"Min": 5
+	},
+	{
+		"Id": 4,
+		"CalculationName": "Multiply",
+		"IsPositiveOnly": true, 
+		"IsNegativeOnly": false, 
+		"Max": 80, 
+		"Min": 2
+	}
+]

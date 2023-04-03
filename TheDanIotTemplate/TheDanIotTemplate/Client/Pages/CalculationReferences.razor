@@ -1,0 +1,27 @@
+﻿@page "/CalculationReferences"
+@inject NavigationManager _navigationManager
+<MudPaper>
+<MudText Typo="Typo.h3">Calculation References</MudText>
+</MudPaper>
+<MudCard>
+    <MudCardContent>
+        <MudTable Items="@References">
+            <HeaderContent>
+                <MudTh>Calculation Name</MudTh>
+                <MudTh>Min</MudTh>
+                <MudTh>Max</MudTh>
+                <MudTh>Is Positive Only</MudTh>
+                <MudTh>Is Negative Only</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd>@context.CalculationName</MudTd>
+                <MudTd>@context.Min</MudTd>
+                <MudTd>@context.Max</MudTd>
+                <MudTd><MudCheckBox @bind-Checked="context.IsPositiveOnly" ReadOnly=true></MudCheckBox></MudTd>
+                <MudTd><MudCheckBox @bind-Checked="context.IsNegativeOnly" ReadOnly=true></MudCheckBox></MudTd>
+            </RowTemplate>
+        </MudTable>
+    </MudCardContent>
+</MudCard>
+
+

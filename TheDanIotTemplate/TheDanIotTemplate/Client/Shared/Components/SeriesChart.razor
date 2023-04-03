@@ -1,0 +1,13 @@
+﻿<MudContainer>
+    <MudCard>
+        <RadzenChart>
+            <RadzenColumnSeries Data="@Data" CategoryProperty="@CategoryProperty" ValueProperty="@ValueProperty"></RadzenColumnSeries>
+        </RadzenChart>
+    </MudCard>
+</MudContainer>
+@code
+{
+    [Parameter] public string CategoryProperty { get; set; } = "Category";
+    [Parameter] public string ValueProperty { get; set; } = "Value";
+    [Parameter] public List<CalculationData> Data { get; set; } = new();
+}

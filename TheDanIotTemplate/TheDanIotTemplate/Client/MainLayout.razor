@@ -1,0 +1,46 @@
+﻿@inherits LayoutComponentBase
+<MudThemeProvider Theme="Theme.DefaultTheme"  IsDarkMode="DarkTheme"/>
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudLayout>
+    <MudAppBar>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"  Color="Color.Secondary"/>
+        <MudNavLink Href="/" Icon="@Icons.Material.Filled.Home">Calculation Application</MudNavLink>
+        <MudChip OnClick="ChangeTheme" Icon="@ThemeIcon" Color="Color.Info">Theme</MudChip>
+    </MudAppBar>
+    <MudDrawer @bind-Open="@DrawerOpen">
+        <MudDrawerHeader>
+        </MudDrawerHeader>
+        <MudDrawerContainer>
+            <NavMenu />
+        </MudDrawerContainer>
+    </MudDrawer>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+@code{
+    private bool DrawerOpen = false;
+    private bool DarkTheme = false;
+    private string ThemeIcon = Icons.Material.Filled.LightMode;
+
+    void DrawerToggle()
+    {
+        DrawerOpen = !DrawerOpen;
+    }
+    private void ChangeTheme()
+    {
+        if (DarkTheme)
+        {
+            DarkTheme = false;
+            ThemeIcon = Icons.Material.Filled.LightMode;
+        }
+        else
+        {
+            DarkTheme = true;
+            ThemeIcon = Icons.Material.Filled.DarkMode;
+        }
+        StateHasChanged();
+    }
+}

@@ -1,0 +1,48 @@
+﻿@page "/CalculationDataView"
+@inject NavigationManager _navigationManager
+<MudPaper>
+    <MudText Typo="Typo.h3">Calculation References</MudText>
+</MudPaper>
+<MudCard>
+    <MudSelect @bind-Value="SelectedReference" Text="Select">
+        @foreach (var reference in References)
+        {
+            <MudSelectItem Value="@reference">@reference.CalculationName</MudSelectItem>
+        }
+    </MudSelect>
+    <MudDatePicker @bind-Date="From" Label="From"></MudDatePicker>
+    <MudTimePicker @bind-Time="FromTime" Label="From Time"></MudTimePicker>
+    <MudDatePicker @bind-Date="To" Label="To"></MudDatePicker>
+    <MudTimePicker @bind-Time="ToTime" Label="To Time"></MudTimePicker>
+    <MudButton OnClick="GetCalculationData" Variant="Variant.Filled" Color="Color.Primary">Find Data</MudButton>
+</MudCard>
+<MudCard>
+    <MudSwitch @bind-Checked="ShowArcGauge" Label="Show Arc Gauge"></MudSwitch>
+    @if (ShowArcGauge)
+    {
+        @if (LastData != null)
+        {
+            <ArcGauge StartAngle="@ArcGaugeSettings.StartAngle" EndAngle="@ArcGaugeSettings.EndAngle" Step="@ArcGaugeSettings.Step" GaugeTickPosition="@ArcGaugeSettings.GaugeTickPosition" HeightPx="@ArcGaugeSettings.HeightPx" WidthPx="@ArcGaugeSettings.WidthPx" Min="@ArcGaugeSettings.Min" Max="@ArcGaugeSettings.Max" Suffix="@ArcGaugeSettings.Suffix" Value="@LastData.Data"></ArcGauge>
+        }
+    }
+</MudCard>
+<MudCard>
+    <MudSwitch @bind-Checked="ShowRadialGauge" Label="Show Radial Gauge"></MudSwitch>
+    @if (ShowRadialGauge)
+    {
+        @if (LastData != null)
+        {
+            <RadialGauge StartAngle="@RadialGaugeSettings.StartAngle" EndAngle="@RadialGaugeSettings.EndAngle" Step="@RadialGaugeSettings.Step" GaugeTickPosition="@RadialGaugeSettings.GaugeTickPosition" HeightPx="@RadialGaugeSettings.HeightPx" WidthPx="@RadialGaugeSettings.WidthPx" Min="@RadialGaugeSettings.Min" Max="@RadialGaugeSettings.Max" Suffix="@RadialGaugeSettings.Suffix" Value="@LastData.Data"></RadialGauge>
+        }
+    }
+</MudCard>
+<MudCard>
+    <MudSwitch @bind-Checked="ShowSeriesGraph" Label="Show Series Graph"></MudSwitch>
+    @if (ShowSeriesGraph)
+    {
+        @if (CalculationDataList != null && CalculationDataList.Any())
+        {
+            <SeriesChart Data="@CalculationDataList" CategoryProperty="Timestamp" ValueProperty="Data"></SeriesChart>
+        }
+    }
+</MudCard>
