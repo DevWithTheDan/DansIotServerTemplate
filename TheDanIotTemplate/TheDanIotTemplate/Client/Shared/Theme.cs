@@ -8,7 +8,7 @@ namespace TheDanIotTemplate.Client.Shared
         {
             Palette = new Palette()
             {
-                AppbarBackground = "#7117cc",
+                AppbarBackground = "#38065e",
                 DrawerBackground = "#7117cc",
             },
             PaletteDark = new PaletteDark() 
