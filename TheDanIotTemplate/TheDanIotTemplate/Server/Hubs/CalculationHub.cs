@@ -23,5 +23,11 @@ namespace TheDanIotTemplate.Server.Hubs
             var data = _calculationService.GetCalculationData(referenceId, from, to);
             Clients.Caller.CalculationData(data);
         }
+
+        public void GetDataView()
+        {
+            var dataView = _calculationService.GetCalculationView();
+            Clients.Caller.CalculationViewList(dataView);
+        }
     }
 }

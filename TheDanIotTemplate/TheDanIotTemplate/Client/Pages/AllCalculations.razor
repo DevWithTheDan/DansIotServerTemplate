@@ -1,0 +1,33 @@
+﻿@page "/AllCalculations"
+@using ViewModels;
+@inject NavigationManager _navigationManager
+<MudPaper>
+    <MudText Typo="Typo.h3">All Calculations</MudText>
+    @if (Calculations != null)
+    {
+        <MudTable Items="@Calculations" Striped=true Hover=true Filter="new Func<CalculationView,bool>(SearchFunction)" SelectedItem="@SelectedView">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Calculations</MudText>
+                <MudSpacer />
+                <MudTextField @bind-Value="Search" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh><MudTableSortLabel SortBy="new Func<CalculationView, object>(x=>x.CalculationReference.CalculationName)">Calculation Name</MudTableSortLabel></MudTh>
+                <MudTh><MudTableSortLabel SortBy="new Func<CalculationView, object>(x=>x.CalculationData.Data)">Calculation Data</MudTableSortLabel></MudTh>
+                <MudTh><MudTableSortLabel SortBy="new Func<CalculationView, object>(x=>x.CalculationData.Timestamp)">Timestamp</MudTableSortLabel></MudTh>
+                <MudTh><MudTableSortLabel SortBy="new Func<CalculationView, object>(x=>x.CalculationReference.Min)">Min</MudTableSortLabel></MudTh>
+                <MudTh><MudTableSortLabel SortBy="new Func<CalculationView, object>(x=>x.CalculationReference.Max)">Max</MudTableSortLabel></MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd>@context.CalculationReference.CalculationName</MudTd>
+                <MudTd>@context.CalculationData.Data</MudTd>
+                <MudTd>@context.CalculationData.Timestamp</MudTd>
+                <MudTd>@context.CalculationReference.Min</MudTd>
+                <MudTd>@context.CalculationReference.Max</MudTd>
+            </RowTemplate>
+            <PagerContent>
+                <MudTablePager />
+            </PagerContent>
+        </MudTable>
+    }
+</MudPaper>

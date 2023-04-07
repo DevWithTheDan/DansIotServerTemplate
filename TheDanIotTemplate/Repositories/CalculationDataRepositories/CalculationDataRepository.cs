@@ -22,6 +22,11 @@ namespace Repositories.CalculationDataRepositories
             return _context.CalculationData.Where(x => x.ReferenceId.Equals(referenceId) && x.Timestamp >= from && x.Timestamp <= to).ToList();
         }
 
+        public List<CalculationData> GetAllData()
+        {
+            return _context.CalculationData.ToList();
+        }
+
         public CalculationData? GetLatest()
         {
             return _context.CalculationData.OrderByDescending(x => x.Timestamp).LastOrDefault();

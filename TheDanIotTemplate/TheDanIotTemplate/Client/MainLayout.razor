@@ -5,7 +5,7 @@
 <MudLayout>
     <MudAppBar>
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"  Color="Color.Secondary"/>
-        <MudNavLink Href="/" Icon="@Icons.Material.Filled.Home">Calculation Application</MudNavLink>
+        <MudNavLink Href="/" Icon="@Icons.Material.Filled.Home" IconColor="Color.Secondary">Calculation Application</MudNavLink>
         <MudChip OnClick="ChangeTheme" Icon="@ThemeIcon" Color="Color.Info">Theme</MudChip>
     </MudAppBar>
     <MudDrawer @bind-Open="@DrawerOpen">
