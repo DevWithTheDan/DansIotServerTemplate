@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BackgroundModuleWorker", "B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleConfigurationFiles", "ExampleConfigurationFiles\ExampleConfigurationFiles.csproj", "{039BE7FE-A529-4964-8B6B-42D479D892E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{DD6B2ED1-29C9-4B67-9D06-EAA21D57FB14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModels", "ViewModels\ViewModels.csproj", "{DD6B2ED1-29C9-4B67-9D06-EAA21D57FB14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

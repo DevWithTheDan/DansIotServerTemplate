@@ -1,0 +1,36 @@
+﻿@using TheDanIotTemplate.Client.Shared.Components.Base.SelectComponent.Events;
+@using TheDanIotTemplate.Client.Shared.Components.Base.SelectComponent.Objects;
+<label>@Label</label>
+<br/>
+<select title="@Title" disabled="@Disabled" value="@Value.Id" @onchange="SelectChanged" style="@CssStyle"> 
+    <option value="">--select item below--</option>
+    @foreach(var value in Values)
+    {
+        <option value="@value.Id">@value.Name</option>
+    }
+</select>
+<br/>
+
+@code {
+    [Parameter] public string Label { get; set; } = string.Empty;
+    [Parameter] public string Title { get; set; } = string.Empty;
+    [Parameter] public bool Disabled { get; set; } = false;
+    [Parameter] public List<StandardSelect> Values { get; set; } = new();
+    [Parameter] public string CallbackReference { get; set; } = string.Empty;
+    [Parameter] public string CssStyle { get; set; } = "border-radius: 0.25em;padding: 0.25em 0.5em;background-color:rebeccapurple;color:white;";
+    private StandardSelect Value { get; set; } = new();
+
+    private void SelectChanged(ChangeEventArgs e)
+    {
+        if(e.Value != null)
+        {
+            var stringValue = e.Value.ToString();
+            if (!string.IsNullOrWhiteSpace(stringValue))
+            {
+                Value = Values.First(x => x.Id.Equals(e.Value));
+                SelectEvents.Invoke(this, e, CallbackReference);
+                StateHasChanged();
+            }
+        }
+    }
+}
