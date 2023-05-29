@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.SignalR.Client;
+﻿using Microsoft.AspNetCore.SignalR.Client;
 using SeededDatabase.Models;
 
 namespace TheDanIotTemplate.Client.Pages
@@ -45,7 +44,7 @@ namespace TheDanIotTemplate.Client.Pages
 
         private void GetAllReferences()
         {
-            DataHubConnection.InvokeAsync("GetAllReferences");
+            DataHubConnection?.InvokeAsync("GetAllReferences");
         }
 
         private void SetAllReferences(List<CalculationReference> references)
@@ -60,7 +59,7 @@ namespace TheDanIotTemplate.Client.Pages
             {
                 var from = From.Value + FromTime.Value;
                 var to = To.Value + ToTime.Value;
-                DataHubConnection.InvokeAsync("GetData", SelectedReference.Id, from, to);
+                DataHubConnection?.InvokeAsync("GetData", SelectedReference.Id, from, to);
             }
         }
 
@@ -76,7 +75,7 @@ namespace TheDanIotTemplate.Client.Pages
 
         private void GetArcGauge()
         {
-            SettingsHubConnection.InvokeAsync("GetArcGaugeSetting");
+            SettingsHubConnection?.InvokeAsync("GetArcGaugeSetting");
         }
 
         private void SetArcGauge(FrontendGauge? value)
@@ -90,7 +89,7 @@ namespace TheDanIotTemplate.Client.Pages
 
         private void GetRadialGauge()
         {
-            SettingsHubConnection.InvokeAsync("GetRadialGaugeSetting");
+            SettingsHubConnection?.InvokeAsync("GetRadialGaugeSetting");
         }
 
         private void SetRadialGauge(FrontendGauge? value)

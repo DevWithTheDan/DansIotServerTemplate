@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.SignalR.Client;
-using Radzen.Blazor;
+﻿using Microsoft.AspNetCore.SignalR.Client;
 using SeededDatabase.Models;
 
 namespace TheDanIotTemplate.Client.Pages
@@ -22,7 +20,7 @@ namespace TheDanIotTemplate.Client.Pages
             } ,
             {
                 2, "None"
-            }            
+            }
         };
         private int SelectedTickPositionArc { get; set; } = 0;
         private int SelectedTickPositionRadial { get; set; } = 0;
@@ -41,7 +39,7 @@ namespace TheDanIotTemplate.Client.Pages
 
         private void GetArcGauge()
         {
-            TemplateHubConnection.InvokeAsync("GetArcGaugeSetting");
+            TemplateHubConnection?.InvokeAsync("GetArcGaugeSetting");
         }
 
         private void SetArcGauge(FrontendGauge? value)
@@ -72,13 +70,13 @@ namespace TheDanIotTemplate.Client.Pages
         private void SetArcGaugeSetting()
         {
             ArcGaugeSettings.GaugeTickPosition = SelectedTickPositionArc;
-            TemplateHubConnection.InvokeAsync("UpdateOrAddSetting", ArcGaugeSettings);
+            TemplateHubConnection?.InvokeAsync("UpdateOrAddSetting", ArcGaugeSettings);
         }
 
         private void SetRadialGaugeSetting()
         {
             RadialGaugeSettings.GaugeTickPosition = SelectedTickPositionRadial;
-            TemplateHubConnection.InvokeAsync("UpdateOrAddSetting", RadialGaugeSettings);
+            TemplateHubConnection?.InvokeAsync("UpdateOrAddSetting", RadialGaugeSettings);
         }
 
     }

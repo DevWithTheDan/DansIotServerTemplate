@@ -1,11 +1,6 @@
 ﻿using Repositories.CalculationDataRepositories;
 using Repositories.CalulationReferenceRepositories;
 using SeededDatabase.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BackgroundModuleWorker.Services
 {

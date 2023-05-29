@@ -1,0 +1,32 @@
+﻿@page "/VehicleDetails"
+@inject NavigationManager _navigationManager
+
+<MudPaper>
+    <MudCard>
+        @if (ManufacturerSelect.Any())
+        {
+            <Select Label="Manufacturers" Title="Select a Manufacturer" Values="@ManufacturerSelect" CallbackReference="@ManufacturerCallbackReference"></Select>
+            @if (VehicleModelSelect.Any())
+            {
+                <Select Label="Models" Title="Select a Model" Values="@VehicleModelSelect" CallbackReference="@VehicleModelCallbackReference"></Select>
+
+                @if (VehicleDetails.Any())
+                {
+                    <MudTable Items="@VehicleDetails">
+                        <HeaderContent>
+                            <MudTh>Description</MudTh>
+                            <MudTh>Registration Number</MudTh>
+                            <MudTh>Condition </MudTh>
+                        </HeaderContent>
+                        <RowTemplate>
+                            <MudTd>@context.Description</MudTd>
+                            <MudTd>@context.RegistrationNumber</MudTd>
+                            <MudTd>@context.Condition</MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                }
+            }
+        }
+
+    </MudCard>
+</MudPaper>

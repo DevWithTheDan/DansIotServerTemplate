@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SeededDatabase.Models;
 
 namespace TheDanIotTemplate.Client.Pages
@@ -15,7 +14,7 @@ namespace TheDanIotTemplate.Client.Pages
                 .Build();
             await TemplateHubConnection.StartAsync();
             TemplateHubConnection.On<List<CalculationReference>>("AllReferences", SetAllReferences);
-            GetAllReferences();            
+            GetAllReferences();
         }
 
         private void GetAllReferences()

@@ -11,13 +11,13 @@ namespace TheDanIotTemplate.Client.Shared
                 AppbarBackground = "#38065e",
                 DrawerBackground = "#7117cc",
             },
-            PaletteDark = new PaletteDark() 
-            { 
+            PaletteDark = new PaletteDark()
+            {
 
             },
             Typography = new Typography()
             {
-                
+
             }
         };
     }

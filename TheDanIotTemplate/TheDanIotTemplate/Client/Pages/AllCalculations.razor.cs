@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using System.Linq;
 using ViewModels;
 
 namespace TheDanIotTemplate.Client.Pages

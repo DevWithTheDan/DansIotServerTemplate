@@ -1,7 +1,7 @@
-using Microsoft.AspNetCore.ResponseCompression;
 using Repositories.CalculationDataRepositories;
 using Repositories.CalulationReferenceRepositories;
 using Repositories.SettingsRepositories;
+using Repositories.VehicleRepositories;
 using SeededDatabase.Context;
 using TheDanIotTemplate.Server.Hubs;
 using TheDanIotTemplate.Shared.Middleware.Services;
@@ -17,6 +17,9 @@ builder.Services.AddTransient<ICalculationService, CalculationService>();
 
 builder.Services.AddTransient<ISettingsRepository, SettingsRepository>();
 builder.Services.AddTransient<ISettingsService, SettingsService>();
+
+builder.Services.AddTransient<IVehicleRepository, VehicleRepository>();
+builder.Services.AddTransient<IVehicleService, VehicleService>();
 
 builder.Services.AddSignalR();
 var app = builder.Build();
@@ -43,4 +46,5 @@ app.MapControllers();
 app.MapFallbackToFile("index.html");
 app.MapHub<CalculationHub>("/CalculationHub");
 app.MapHub<SettingsHub>("/SettingsHub");
+app.MapHub<VehicleHub>("/VehicleHub");
 app.Run();

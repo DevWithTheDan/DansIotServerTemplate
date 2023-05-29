@@ -2,11 +2,6 @@
 using Repositories.CalculationDataRepositories;
 using Repositories.CalulationReferenceRepositories;
 using SeededDatabase.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BackgroundModuleWorker.ScopedServices
 {
@@ -25,12 +20,15 @@ namespace BackgroundModuleWorker.ScopedServices
         {
             using var mainScope = _serviceScopeFactory.CreateScope();
             var context = mainScope.ServiceProvider.GetService<SeededDatabaseContext>();
-            _calculationGenerator = GetCalculationGenerator(context);
-            await _calculationGenerator.GenerateCalculations(cancellationToken);
+            if (context != null)
+            {
+                _calculationGenerator = GetCalculationGenerator(context);
+                await _calculationGenerator.GenerateCalculations(cancellationToken);
+            }
             return;
         }
 
-        private CalculationGenerator GetCalculationGenerator(SeededDatabaseContext context)
+        private static CalculationGenerator GetCalculationGenerator(SeededDatabaseContext context)
         {
             var dataRepo = new CalculationDataRepository(context);
             var reference = new CalculationReferenceRepository(context);

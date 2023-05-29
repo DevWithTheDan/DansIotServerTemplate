@@ -1,10 +1,5 @@
 ﻿using SeededDatabase.Context;
 using SeededDatabase.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repositories.CalulationReferenceRepositories
 {
@@ -23,7 +18,7 @@ namespace Repositories.CalulationReferenceRepositories
 
         public CalculationReference? GetCalculationReference(int id)
         {
-            return _context.CalculationReferences.FirstOrDefault(x=>x.Id.Equals(id));
+            return _context.CalculationReferences.FirstOrDefault(x => x.Id.Equals(id));
         }
     }
 }

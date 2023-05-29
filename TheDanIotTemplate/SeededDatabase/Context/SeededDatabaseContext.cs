@@ -2,17 +2,12 @@
 using Microsoft.Extensions.Configuration;
 using SeededDatabase.Models;
 using SeededDatabase.Seeder;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeededDatabase.Context
 {
     public class SeededDatabaseContext : DbContext
     {
-        public SeededDatabaseContext() 
+        public SeededDatabaseContext()
         {
             var newDatabaseCreated = Database.EnsureCreated();
             if (newDatabaseCreated)
@@ -20,7 +15,6 @@ namespace SeededDatabase.Context
                 var seeder = new SeedFromConfigFiles(this);
                 seeder.ImportCalculationReferences();
             }
-            //Database.
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -37,6 +31,9 @@ namespace SeededDatabase.Context
         public virtual DbSet<CalculationReference> CalculationReferences { get; set; } = null!;
         public virtual DbSet<CalculationData> CalculationData { get; set; } = null!;
         public virtual DbSet<FrontendGauge> FrontendGauges { get; set; } = null!;
-
+        public virtual DbSet<VehicleOwner> VechicleOwners { get; set; } = null!;
+        public virtual DbSet<VehicleDetail> VehicleDetails { get; set; } = null!;
+        public virtual DbSet<VehicleManufacturer> VehicleManufacturers { get; set; } = null!;
+        public virtual DbSet<VehicleModel> VehicleModels { get; set; } = null!;
     }
 }
